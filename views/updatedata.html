@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeliveryPC | Atualizar Dados</title>
+  <link rel="stylesheet" href="../css/foundation.css" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Kanit:400,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <!-- TO DO: Melhorar a responsividade depois -->
+    <!-- <div class="title-bar" data-responsive-toggle="top-menu" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle></button>
+      <div class="title-bar-title">Menu</div>
+    </div> -->
+    <div class="top-bar" id="top-menu">
+      <div class="top-bar-left">
+        <ul class="dropdown menu top-menu" data-dropdown-menu>
+          <li class="menu-text">
+            <a href="/dash/colaborador"><div class="top-bar-logo"></div></a>
+          </li>
+          <li><a href="/dash/colaborador">Dashboard</a></li>
+          <li><a class="is-active" href="/dash/update">Atualizar Dados</a></li>
+          <li><a href="/dash/history">Histórico</a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><a href="/dash/logout" class="button">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row row-space">
+      <h4 class="main-title">ATUALIZAR DADOS</h4>
+      <form id="update-data" data-abide novalidate>
+        <div class="small-12 large-6 columns">
+          <fieldset class="fieldset">
+            <legend><strong>Dados Pessoais</strong></legend>
+            <div data-abide-error class="alert callout" style="display: none;">
+              <p><i class="fa fa-exclamation-circle"></i> Campos obrigatórios.</p>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">DDD</span>
+              <input class="input-group-field"  type="number" value="<%= dd %>" disabled>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">Número do telefone</span>
+              <input class="input-group-field disabled"  type="number" value="<%= phone %>" disabled>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">Nome</span>
+              <input class="input-group-field" name="name" type="text" value="<%= name %>" placeholder="Seu nome completo aqui" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">Email</span>
+              <input class="input-group-field" name="email" type="text" value="<%= email %>" placeholder="exemplo@exemplo.com">
+            </div>
+            <div class="text-center">
+              <input  type="submit" class="secondary button" value="Atualizar">
+            </div>
+          </fieldset>
+        </div>
+      </form>
+      <form id="new-password" data-abide novalidate>
+        <div class="small-12 large-6 columns">
+          <fieldset class="fieldset">
+            <legend><strong>Senha</strong></legend>
+            <div data-abide-error class="alert callout" style="display: none;">
+              <p><i class="fa fa-exclamation-circle"></i> Campos obrigatórios.</p>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">Senha Atual</span>
+              <input class="input-group-field" name="now_password" id="now_password" type="password" placeholder="Sua atual senha aqui" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">Nova Senha</span>
+              <input class="input-group-field" name="new_password" id="new_password" type="password" placeholder="Sua nova senha aqui" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">Confirmar Senha</span>
+              <input class="input-group-field" name="new_password_confirm" id="new_password_confirm" type="password" placeholder="Repita sua nova senha" required>
+            </div>
+            <div class="text-center">
+              <input  type="submit" class="secondary button space-button" value="Alterar Senha">
+            </div>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+    <footer class="footer-box">
+      <div class="row">
+        <div class="small-6 large-6 columns">
+          <div class="footer-content">
+            &copy; 2016 <strong>Vision Tech Brazil</strong>. Todos os direitos reservados.
+          </div>
+        </div>
+        <div class="small-6 large-6 columns ">
+          <ul class="menu float-right footer-content-list">
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="#">Termo de Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="../js/vendor/what-input.min.js"></script>
+    <script src="../js/foundation.min.js"></script>
+    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+    <script src="../js/app.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+       $("#update-data").on('valid.zf.abide', function(event){
+        if(event.target.type != 'submit')
+          return; 
+
+        var param = $(this).serializeArray(); 
+
+        $.post({
+          url: '/dash/updateRegister', 
+          data: param 
+        }).done(function(data){
+          if(data.status)
+            alertify.alert("Dados atualizados com sucesso."); 
+          else
+            alertify.error(data.msg); 
+
+        }).fail(function(){
+          alertify.error('Erro na conexão, tente novamente.'); 
+        }); 
+
+      }).on('submit', function(event){
+        event.preventDefault();
+      });
+
+
+
+      $('#new-password').on('valid.zf.abide', function(event){
+        if(event.target.type != 'submit')
+          return; 
+
+        var param = $(this).serializeArray(); 
+
+        $.post({
+          url: '/dash/passwordChange', 
+          data: param 
+        }).done(function(data){
+          if(data.status)
+            alertify.alert("Senha alterada."); 
+          else
+            alertify.error(data.msg); 
+
+        }).fail(function(){
+          alertify.error('Erro na conexão, tente novamente.'); 
+        }); 
+      }).on('submit', function(event){
+        event.preventDefault();
+      });
+
+    }); 
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "deliverypc_api",
+  "version": "1.0.0",
+  "description": "delivery pc web api",
+  "main": "todo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://allyson_maciel@bitbucket.org/allyson_maciel/deliverypc_backend.git"
+  },
+  "author": " <Allyson Maciel Guimarães>",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/allyson_maciel/deliverypc_backend#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "crypto-js": "^3.1.6",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.7",
+    "node-gcm": "^0.14.0",
+    "node-telegram-bot-api": "^0.21.1"
+  }
+}

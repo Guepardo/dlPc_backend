@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teste</title>
+</head>
+<body>
+	<h1>Notification test screen by websockets.</h1>
+	<ul>
+		<li>Loged user: <span style="color:red;"><%= name %></span> </li>
+		<li>User  phone:<%= dd %> - <%= phone %> </li>
+		<li>User status:<%= busy %> </li>
+	</ul>
+	<h4>Wait for some notifications...</h4>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+	<script type="text/javascript">
+		var authToken = '<%= authToken %>';  
+		var socket = new io(); 
+
+		socket.on('connect',function(){
+			socket.emit('auth',{authToken: authToken}); 
+		}); 
+
+		socket.on('signed',function(){
+			alertify.success('Authenticated socket comproved. This connection is secure.',50000); 
+		}); 
+
+		socket.on('pulseSolicitationAlert',function(order){
+			var text = "<h2>----Uma nova solicitação---</h2><br>"; 
+			text +="id: "+ order.id+'<br>'; 
+			text +="hora de criação: "+ order.creation_date+'<br>';
+
+			alertify.alert(text); 
+			notifyMe(text); 
+		}); 
+
+		function notifyMe() {
+
+		  if (!("Notification" in window)) {
+		  	alert("This browser does not support system notifications");
+		  }else if (Notification.permission === "granted") {
+		   
+		    var notification = new Notification("Alerta, nova solicitação.");
+		}
+		  else if (Notification.permission !== 'denied') {
+		  	Notification.requestPermission(function (permission) {
+
+		      if (permission === "granted") {
+		      	var notification = new Notification("Alerta, nova solicitação.");
+		      }
+		  });
+		  }
+		}
+</script>
+</body>
+</html>

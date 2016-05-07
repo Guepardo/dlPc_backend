@@ -1,0 +1,258 @@
+
+/* General body style */
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: rgba(255, 255, 255);
+}
+
+/* DASHBOARD */
+
+/* Top bar */
+
+.top-bar {
+  min-height: 200px;
+  background: url(../imgs/keyboard.jpg) 100% no-repeat;
+  box-shadow: 0px 3px 3px rgb(199, 198, 198);
+}
+
+.top-bar ul {
+  background: transparent;
+}
+
+.top-bar-left ul {
+  margin-top: 50px;
+}
+
+.top-bar-right ul {
+  margin-top: 75px;
+  margin-right: 50px;
+}
+
+.top-bar ul li a {
+  color: #fff;
+}
+
+.top-bar ul li a:hover {
+  color: rgb(64, 117, 255);
+  -webkit-transition: color 1s ease-in-out;
+  -moz-transition: color 1s ease-in-out;
+  -ms-transition: color 1s ease-in-out;
+  -o-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
+}
+
+.top-bar-logo {
+  background: url(../imgs/delivery-pc-logo-sub-w.png) 100% no-repeat;
+  background-size: cover;
+  height: 48px;
+  width: 170px;
+}
+
+/* Top bar active link */
+
+.is-active {
+  position: relative;
+  font-weight: bold;
+}
+
+/* Top bar active link's blue horizontal line */
+
+.is-active:after {
+  content: "";
+  width: 80%;
+  height: 3px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(64, 117, 255);
+  left: 10%;
+}
+
+/* Row content */
+
+.row-content{
+  margin-left: 1000px;
+  margin-top: 50px;
+}
+
+/* Row content's main title */
+
+.main-title {
+  font-family: 'Kanit', sans-serif;
+  /*color: #fff;*/
+  /*background-color: rgba(64, 117, 255, 1);*/
+  text-align: center;
+}
+
+/* Info boxes */
+
+.box {
+  margin-top: 50px;
+  background-color: rgba(164, 164, 164, 0.15);
+  padding: 10px;
+}
+
+.box-title {
+  font-family: 'Kanit', sans-serif;
+  text-align: center;
+}
+
+.box-content {
+  margin: 10px;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+
+.button {
+  color: rgb(64, 117, 255);
+  background-color: rgb(255, 255, 255);
+}
+
+.secondary {
+  color: rgb(255, 255, 255) !important;
+  background-color: rgb(64, 117, 255) !important;
+}
+
+.secondary:hover {
+  color: rgb(255, 255, 255) !important;
+  background-color: rgb(1, 37, 131) !important;
+  -webkit-transition: color 1s, background-color 1s ease-in-out;
+  -moz-transition: color 1s, background-color 1s ease-in-out;
+  -ms-transition: color 1s, background-color 1s ease-in-out;
+  -o-transition: color 1s, background-color 1s ease-in-out;
+  transition: color 1s, background-color 1s ease-in-out;
+}
+
+.circle-button {
+  width:50px;
+  height:50px;
+  border-radius:100%;
+}
+
+.button:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(64, 117, 255);
+  -webkit-transition: color 1s, background-color 1s ease-in-out;
+  -moz-transition: color 1s, background-color 1s ease-in-out;
+  -ms-transition: color 1s, background-color 1s ease-in-out;
+  -o-transition: color 1s, background-color 1s ease-in-out;
+  transition: color 1s, background-color 1s ease-in-out;
+}
+
+.table-button {
+  text-decoration: none;
+  color: rgb(64, 117, 255);
+  background-color: transparent;
+  font-size: 95%;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-top: 15px;
+}
+
+.table-button:hover {
+  color: rgb(1, 37, 131);
+  background-color: transparent;
+  -webkit-transition: color 1s ease-in-out;
+  -moz-transition: color 1s ease-in-out;
+  -ms-transition: color 1s ease-in-out;
+  -o-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
+}
+
+/* Footer */
+
+.footer-box {
+  margin-top: 50px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(64, 117, 255);
+  min-height: 80px;
+  box-shadow: 0px -3px 3px rgb(199, 198, 198);
+}
+
+.footer-content {
+  margin-top: 30px;
+}
+
+.footer-content-list {
+  margin-top: 23px;
+}
+
+.footer-content-list a {
+  color: rgb(255, 255, 255);
+}
+
+.footer-content-list a:hover {
+  color: rgb(235, 235, 235);
+  -webkit-transition: color 1s ease-in-out;
+  -moz-transition: color 1s ease-in-out;
+  -ms-transition: color 1s ease-in-out;
+  -o-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
+}
+
+/* Login page footer */
+
+.footer-content-login {
+  text-align: center;
+  margin-top: 50px;
+  color: rgb(120, 120, 120);
+}
+
+.footer-links-login a {
+  color: rgb(64, 117, 255);
+}
+
+/* LOGIN */
+
+.box-login-logo {
+  background: url(../imgs/delivery-pc-logo-sub-w.png) 100% no-repeat;
+  background-size: cover;
+  height: 48px;
+  width: 170px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.box-login {
+  margin-top: 50px;
+  background: url(../imgs/keyboard.jpg) 100% no-repeat;
+  padding: 10px;
+  box-shadow: 0px 0px 8px rgb(199, 198, 198);
+}
+
+.box-label {
+  color: rgb(255, 255, 255);
+}
+
+/* PASSWORD */
+
+.row-space {
+  margin-top: 50px;
+}
+
+.callout {
+  text-align: justify;
+}
+
+.callout-alert {
+  background-color: rgb(226, 226, 226);
+}
+
+.space {
+  margin-bottom: 32px;
+}
+
+.badge {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: bold;
+  font-size: 60%;
+}
+
+/* UPDATE DATA */
+
+.space-button {
+  margin-top: 56px;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeliveryPC | Login</title>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Kanit:400,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="row">
+    <form id="login" data-abide novalidate>
+      <div class="small-12 large-4 large-offset-4 columns">
+        <div class="box-login">
+          <div class="box-login-logo float-center"></div>
+          <div>
+            <label class="box-label">
+              DDD
+              <input name="dd" type="number" placeholder="00" aria-describedby="DDD" required>
+              <span class="form-error">Preencha este campo</span>
+            </label>
+            <p class="help-text box-label" id="DDD">O DDD deve conter apenas números.</p>
+            <label class="box-label">
+              Número de telefone
+              <input name="phone" type="number" placeholder="99999999" required>
+              <span class="form-error">Preencha este campo</span>
+            </label>
+            <p class="help-text box-label" id="DDD">O número de telefone deve conter apenas números.</p>
+            <label class="box-label">
+              Senha
+              <input name="password" id="password" type="password" placeholder="Sua senha aqui" required>
+              <span class="form-error">Preencha este campo</span>
+            </label>
+            <div class="text-center">
+              <button type="submit" class="button">Entrar</button>
+              <button type="button" class="button">Cadastre-se</button>
+            </div>
+            <a href="/password">
+              <button type="button" class="button float-center alert">Esqueceu sua senha?</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <footer>
+    <div class="row">
+      <div class="small-12 large-12 columns">
+        <div class="footer-content-login">
+          &copy; 2016 <strong>Vision Tech Brazil</strong>. Todos os direitos reservados.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 large-12 columns">
+        <div class="menu-centered">
+          <ul class="menu footer-links-login">
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="#">Termo de Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="js/vendor/what-input.min.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+  <script type="text/javascript">
+  // mais tarde tiramos isso daqui.
+  $(document).ready(function(){
+
+    //Tratamento do data-abide;
+    //Esse evento só é disparado quando todos os campos 'required' do formulário
+    //estão preenchidos.
+    $('#login').on('formvalid.zf.abide',function(event){
+      var args = $(this).serializeArray(); //Serializando inputs do formulário.
+
+      //Enviando informações do formulário via post para a rota /login.
+      $.post({
+          url : '/login',
+          data: args
+      }).done(function(data){
+         if(data.status)
+            window.location.href = data.redirect;
+          else{
+            alertify.error(data.msg);
+            $('#password').val('');
+          }
+     }).fail(function(){//Em caso de falha, lance esta mensagem de erro.
+      alertify.error("Erro na conexão, tente novamente.");
+     });
+    }).on('submit',function(event){//Server para não deixar o formulário redirecionar sozinho.
+      event.preventDefault();
+    });
+
+  });
+</script>
+</body>
+</html>
